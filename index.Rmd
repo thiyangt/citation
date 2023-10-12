@@ -157,10 +157,10 @@ Column {data-width=300}
 singleyr_lka2 <- singleyr_lka
 singleyr_lka2 <- clean_names(singleyr_lka2)
 s1 <- ggplot(data=singleyr_lka2,
-       aes(y=reorder(authfull,(nc2222_ns)), x = nc2222_ns, col=inst_name)) + geom_point()   + xlab("Total cites in 2022") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+       aes(y=reorder(authfull,(nc2222_ns)), x = nc2222_ns, col=inst_name)) + geom_point()   + xlab("Total cites in 2022") + scale_color_manual(values = color_ins) + theme(legend.position="none", axis.text.y = element_text(size = 6)) + ylab("")
 
 s2 <- ggplot(data=singleyr_lka2,
-       aes(y=reorder(authfull,(h22_ns)), x = h22_ns, col=inst_name)) + geom_point() +    xlab("h-index as of end 2022") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+       aes(y=reorder(authfull,(h22_ns)), x = h22_ns, col=inst_name)) + geom_point() +    xlab("h-index as of end 2022") + scale_color_manual(values = color_ins) + theme(legend.position="none", axis.text.y = element_text(size = 6)) + ylab("")
 
 ```
 
@@ -174,7 +174,7 @@ ggplotly(s1, tooltip = c("inst_name","nc2222_ns"))
 
 ```{r, fig.height=8}
 s4 <- ggplot(data=singleyr_lka2,
-       aes(y=reorder(authfull,(hm22_ns)), x = hm22_ns, col=inst_name)) + geom_point() +    xlab("hm-index as of end 2022") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+       aes(y=reorder(authfull,(hm22_ns)), x = hm22_ns, col=inst_name)) + geom_point() +    xlab("hm-index as of end 2022") + scale_color_manual(values = color_ins) + theme(legend.position="none", axis.text.y = element_text(size = 6)) + ylab("")
 ggplotly(s4, tooltip = c("inst_name","hm22_ns"))
 ```
 
@@ -192,7 +192,7 @@ ggplotly(s2, tooltip = c("inst_name","h22_ns"))
 
 ```{r,fig.height=8}
 s5 <- ggplot(data=singleyr_lka2,
-       aes(y=reorder(authfull,(nps_ns)), x = nps_ns, col=inst_name)) + geom_point() +    xlab("Number of single authored papers") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+       aes(y=reorder(authfull,(nps_ns)), x = nps_ns, col=inst_name)) + geom_point() +    xlab("Number of single authored papers") + scale_color_manual(values = color_ins) + theme(legend.position="none", axis.text.y = element_text(size = 6)) + ylab("")
 ggplotly(s5, tooltip = c("inst_name","nps_ns"))
 ```
 
@@ -203,7 +203,7 @@ Column {data-width=300}
 
 ```{r, fig.height=8}
 s3 <- ggplot(data=singleyr_lka2,
-       aes(y=reorder(authfull,(c_ns)), x = c_ns, col=inst_name)) + geom_point() +    xlab("Composite score") + scale_color_manual(values = color_ins)+theme(legend.position="none") + ylab("")
+       aes(y=reorder(authfull,(c_ns)), x = c_ns, col=inst_name)) + geom_point() +    xlab("Composite score") + scale_color_manual(values = color_ins)+theme(legend.position="none", axis.text.y = element_text(size = 6)) + ylab("")
 ggplotly(s3, tooltip = c("inst_name","c_ns"))
 ```
 
@@ -211,7 +211,7 @@ ggplotly(s3, tooltip = c("inst_name","c_ns"))
 
 ```{r, fig.height=8}
 s6 <- ggplot(data=singleyr_lka2,
-       aes(y=reorder(authfull,(ncs_ns)), x = ncs_ns, col=inst_name)) + geom_point() +    xlab("Total cites to single authored papers") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+       aes(y=reorder(authfull,(ncs_ns)), x = ncs_ns, col=inst_name)) + geom_point() +    xlab("Total cites to single authored papers") + scale_color_manual(values = color_ins) + theme(legend.position="none", axis.text.y = element_text(size = 6)) + ylab("")
 ggplotly(s6, tooltip = c("inst_name","ncs_ns"))
 ```
 
@@ -284,9 +284,9 @@ ggplotly(c6, tooltip = c("inst_name","ncs_ns"))
 
 # About
 
-**Acknowledgement**
+**References**
 
-Ioannidis, John P.A. (2023), “October 2023 data-update for "Updated science-wide author databases of standardized citation indicators"”, Elsevier Data Repository, V6, doi: 10.17632/btchxktzyw.6
+Ioannidis, John P.A. (2023), October 2023 data-update for "Updated science-wide author databases of standardized citation indicators", Elsevier Data Repository, V6, doi: 10.17632/btchxktzyw.6
 
 **Prepared by:** [Dr Thiyanga S. Talagala](https://thiyanga.netlify.app/)
 
