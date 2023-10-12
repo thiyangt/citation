@@ -120,7 +120,7 @@ p4 |> style(showlegend = FALSE)
 
 
 
-# Authors by Institution: during calendar year 2022
+# Authors by institution: during calendar year 2022
 
 Column {data-width=300}
 -----------------------------------------------------------------------
@@ -140,7 +140,7 @@ a2 |> style(showlegend = TRUE)
 
 
 
-# Authors by Institution - Career-long data
+# Authors by institution: Career-long data
 
 Column {data-width=300}
 -----------------------------------------------------------------------
