@@ -24,18 +24,12 @@ singleyr <- read_excel(here("data", "Table_1_Authors_singleyr_2022_pubs_since_17
 singleyr_lka <- singleyr |> filter(cntry=="lka")
 ```
 
-# Career-long data visualization
+# Number of authors
 
-```{r}
-career_lka |>
-	group_by(inst_name) |>
-	summarise(count = n()) |> 
-	ggplot(aes(x = reorder(inst_name,(-count)), y = count)) + 
-		geom_bar(stat = 'identity') + 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + xlab("")
-```
+Column {data-width=400}
+-----------------------------------------------
 
-# Single year data visualization
+### Figure 1: Single recent year data pertain to citations received during calendar year 2022
 
 ```{r}
 singleyr_lka  |>
@@ -43,8 +37,55 @@ singleyr_lka  |>
 	summarise(count = n()) |> 
 	ggplot(aes(x = reorder(inst_name,(-count)), y = count)) + 
 		geom_bar(stat = 'identity') + 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + xlab("")
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + xlab("")+xlab("Institution name") + ylab("Number of authors")
 ```
+
+
+### Figure 2: Career-long data are updated to end-of-2022
+
+```{r, fig.cap=""}
+career_lka |>
+	group_by(inst_name) |>
+	summarise(count = n()) |> 
+	ggplot(aes(x = reorder(inst_name,(-count)), y = count)) + 
+		geom_bar(stat = 'identity') + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + xlab("Institution name") + ylab("Number of authors")
+```
+
+
+
+
+
+Column {data-width=300}
+-----------------------------------------------------------------------
+
+### Rank based on composite score single data (self-citation excluded)
+
+```{r, fig.height=12}
+singleyr_lka_filter <- singleyr_lka |>
+  select(c("authfull", "inst_name", "rank"))
+career_lka_filter <- career_lka |>
+  select(c("authfull", "inst_name", "rank"))
+ggplot(data=singleyr_lka_filter,
+       aes(y=reorder(authfull,(-rank)), x = rank, col=I(ifelse(inst_name=="University of Sri Jayewardenepura", "red", "black")))) + geom_point()
+```
+
+Column {data-width=300}
+-----------------------------------------------------------------------
+
+### Rank based on composite score career long data (self-citation excluded)
+
+```{r, fig.height=5}
+ggplot(data=career_lka_filter,
+       aes(y=reorder(authfull,(-rank)), x = rank, col=I(ifelse(inst_name=="University of Sri Jayewardenepura", "red", "black")))) + geom_point()
+```
+
+
+# Author profile: career long data 
+
+
+
+# Author profile: single year recent data (2022)
 
 # Career-long data (updated to end-of-2022 )
 
