@@ -6,7 +6,18 @@ output:
     vertical_layout: fill
 ---
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3LKGJ7KPKZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3LKGJ7KPKZ');
+</script>
+
 ```{r setup, include=FALSE}
+#statistics.mart.tst
 library(flexdashboard)
 ```
 
@@ -74,7 +85,7 @@ career_lka |>
 Column {data-width=300}
 -----------------------------------------------------------------------
 
-### Figure 3: Rank based on composite score-calendar year 2022 data (self-citation excluded)
+### Figure 3: Rank based on composite score with data from calendar year 2022 (self-citation excluded)
 
 ```{r, fig.height=12}
 singleyr_lka_filter <- singleyr_lka |>
@@ -94,7 +105,7 @@ p1.2
 Column {data-width=300}
 -----------------------------------------------------------------------
 
-### Figure 4: Rank based on composite score- career-long data (self-citation excluded)
+### Figure 4: Rank based on composite score with data from career-long data (self-citation excluded)
 
 ```{r, fig.height=12}
 p2 <- ggplot(data=career_lka_filter,
