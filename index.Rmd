@@ -1,5 +1,5 @@
 ---
-title: "Visualisation of science-wide author databases of standardized citation indicators for Sri Lanka"
+title: "Sri Lanka's Research Impact: A Visual Exploration of Citation Indicators"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -46,7 +46,7 @@ Column {data-width=400}
 
 ### Figure 1: Single recent year data pertain to citations received during calendar year 2022
 
-```{r}
+```{r, fig.height=5}
 singleyr_lka  |>
 	group_by(inst_name) |>
 	summarise(count = n()) |> 
@@ -58,7 +58,7 @@ singleyr_lka  |>
 
 ### Figure 2: Career-long data are updated to end-of-2022
 
-```{r, fig.cap=""}
+```{r, fig.height=5}
 career_lka |>
 	group_by(inst_name) |>
 	summarise(count = n()) |> 
@@ -74,7 +74,7 @@ career_lka |>
 Column {data-width=300}
 -----------------------------------------------------------------------
 
-### Rank based on composite score single data (self-citation excluded)
+### Figure 3: Rank based on composite score-calendar year 2022 data (self-citation excluded)
 
 ```{r, fig.height=12}
 singleyr_lka_filter <- singleyr_lka |>
@@ -94,7 +94,7 @@ p1.2
 Column {data-width=300}
 -----------------------------------------------------------------------
 
-### Rank based on composite score career long data (self-citation excluded)
+### Figure 4: Rank based on composite score- career-long data (self-citation excluded)
 
 ```{r, fig.height=12}
 p2 <- ggplot(data=career_lka_filter,
@@ -109,12 +109,12 @@ p4 |> style(showlegend = FALSE)
 
 
 
-# Authors by Institution - 2022 data
+# Authors by Institution: during calendar year 2022
 
 Column {data-width=300}
 -----------------------------------------------------------------------
 
-### Rank based on composite score: 2022 calender data (self-citation excluded)
+### Figure 5: Rank based on composite score: 2022 calender year data (self-citation excluded)
 
 ```{r, fig.height=12}
 a1 <- ggplot(data=singleyr_lka_filter,
@@ -129,12 +129,12 @@ a2 |> style(showlegend = TRUE)
 
 
 
-# Authors by Institution - Career long data
+# Authors by Institution - Career-long data
 
 Column {data-width=300}
 -----------------------------------------------------------------------
 
-### Rank based on composite score career long data (self-citation excluded)
+### Figure 6: Rank based on composite score: career-long data (self-citation excluded)
 
 ```{r, fig.height=12}
 
@@ -148,7 +148,7 @@ b2 |> style(showlegend = TRUE)
 ```
 
 
-# Author profiles: 2022 data
+# Author profiles: with data from calendar year 2022 data
 
 Column {data-width=300}
 -----------------------------------------------------------------------
@@ -164,13 +164,13 @@ s2 <- ggplot(data=singleyr_lka2,
 
 ```
 
-### Total cites in 2022 (self-citations excluded)
+### Figure 7: Total cites in 2022 (self-citations excluded)
 
 ```{r, fig.height=8}
 ggplotly(s1, tooltip = c("inst_name","nc2222_ns"))
 ```
 
-### hm-index as of end 2022 (self-citations excluded)
+### Figure 10: hm-index as of end 2022 (self-citations excluded)
 
 ```{r, fig.height=8}
 s4 <- ggplot(data=singleyr_lka2,
@@ -181,14 +181,14 @@ ggplotly(s4, tooltip = c("inst_name","hm22_ns"))
 Column {data-width=300}
 -----------------------------------------------------------------------
 
-### h-index as of end 2022 (self-citations excluded)
+### Figure 8: h-index as of end 2022 (self-citations excluded)
 
 ```{r, fig.height=8}
 ggplotly(s2, tooltip = c("inst_name","h22_ns"))
 ```
 
 
-### Number of single authored papers
+### Figure 11: Number of single authored papers
 
 ```{r,fig.height=8}
 s5 <- ggplot(data=singleyr_lka2,
@@ -199,7 +199,7 @@ ggplotly(s5, tooltip = c("inst_name","nps_ns"))
 Column {data-width=300}
 -----------------------------------------------------------------------
 
-### Composite score (self-citations excluded)
+### Figure 9: Composite score (self-citations excluded)
 
 ```{r, fig.height=8}
 s3 <- ggplot(data=singleyr_lka2,
@@ -207,7 +207,7 @@ s3 <- ggplot(data=singleyr_lka2,
 ggplotly(s3, tooltip = c("inst_name","c_ns"))
 ```
 
-### Total cites to single authored papers
+### Figure 12: Total cites to single authored papers (self-citations excluded)
 
 ```{r, fig.height=8}
 s6 <- ggplot(data=singleyr_lka2,
@@ -215,7 +215,7 @@ s6 <- ggplot(data=singleyr_lka2,
 ggplotly(s6, tooltip = c("inst_name","ncs_ns"))
 ```
 
-# Author profiles: career long data
+# Author profiles: career-long data
 
 Column {data-width=300}
 -----------------------------------------------------------------------
@@ -231,13 +231,13 @@ c2 <- ggplot(data=career_lka2,
 
 ```
 
-### Total cites 1996-2022 (self-citations excluded)
+### Figure 13: Total cites 1996-2022 (self-citations excluded)
 
 ```{r, fig.height=8}
 ggplotly(c1, tooltip=c("inst_name","nc9622_ns"))
 ```
 
-### hm-index as of end 2022 (self-citations excluded)
+### Figure 16: hm-index as of end 2022 (self-citations excluded)
 
 ```{r, fig.height=8}
 c4 <- ggplot(data=career_lka2,
@@ -248,14 +248,14 @@ ggplotly(c4, tooltip = c("inst_name","hm22_ns"))
 Column {data-width=300}
 -----------------------------------------------------------------------
 
-### h-index as of end 2022 (self-citations excluded)
+### Figure 14: h-index as of end 2022 (self-citations excluded)
 
 ```{r, fig.height=8}
 ggplotly(c2, tooltip = c("inst_name","h22_ns"))
 ```
 
 
-### Number of single authored papers
+### Figure 17: Number of single authored papers
 
 ```{r,fig.height=8}
 c5 <- ggplot(data=career_lka2,
@@ -266,7 +266,7 @@ ggplotly(c5, tooltip = c("inst_name","nps_ns"))
 Column {data-width=300}
 -----------------------------------------------------------------------
 
-### Composite score (self-citations excluded)
+### Figure 15: Composite score (self-citations excluded)
 
 ```{r, fig.height=8}
 c3 <- ggplot(data=career_lka2,
@@ -274,7 +274,7 @@ c3 <- ggplot(data=career_lka2,
 ggplotly(c3, tooltip = c("inst_name","c_ns"))
 ```
 
-### Total cites to single authored papers
+### Figure 18: Total cites to single authored papers (self-citations excluded)
 
 ```{r, fig.height=8}
 c6 <- ggplot(data=career_lka2,
@@ -291,3 +291,5 @@ Ioannidis, John P.A. (2023), October 2023 data-update for "Updated science-wide 
 **Prepared by:** [Dr Thiyanga S. Talagala](https://thiyanga.netlify.app/)
 
 **email:** ttalagala@sjp.ac.lk
+
+**Last updated: ** 12 October 2023
