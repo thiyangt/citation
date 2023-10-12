@@ -1,0 +1,53 @@
+---
+title: "Visualisation of science-wide author databases of standardized citation indicators"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+```
+
+```{r}
+# data
+
+```
+
+# Panel 1
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
+
+---
+
+# Panel 2
+
+Column {data-width=650}
+-----------------------------------------------------------------------
