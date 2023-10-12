@@ -157,29 +157,137 @@ Column {data-width=300}
 singleyr_lka2 <- singleyr_lka
 singleyr_lka2 <- clean_names(singleyr_lka2)
 s1 <- ggplot(data=singleyr_lka2,
-       aes(y=reorder(authfull,(nc2222_ns)), x = nc2222_ns), col=inst_name) + geom_point()   + xlab("Total cites in 2022 (self-citations excluded)") + scale_color_manual(values = color_ins) + theme(legend.position="none") 
+       aes(y=reorder(authfull,(nc2222_ns)), x = nc2222_ns, col=inst_name)) + geom_point()   + xlab("Total cites in 2022") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
 
 s2 <- ggplot(data=singleyr_lka2,
-       aes(y=reorder(authfull,(h22_ns)), x = h22_ns), col=inst_name) + geom_point() +    xlab("h-index as of end 2022 (self-citations excluded)") + scale_color_manual(values = color_ins) + theme(legend.position="none") 
-ggplotly(s1, tooltip = c("inst_name","h22_ns"))
+       aes(y=reorder(authfull,(h22_ns)), x = h22_ns, col=inst_name)) + geom_point() +    xlab("h-index as of end 2022") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+
+```
+
+### Total cites in 2022 (self-citations excluded)
+
+```{r, fig.height=8}
+ggplotly(s1, tooltip = c("inst_name","nc2222_ns"))
+```
+
+### hm-index as of end 2022 (self-citations excluded)
+
+```{r, fig.height=8}
+s4 <- ggplot(data=singleyr_lka2,
+       aes(y=reorder(authfull,(hm22_ns)), x = hm22_ns, col=inst_name)) + geom_point() +    xlab("hm-index as of end 2022") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+ggplotly(s4, tooltip = c("inst_name","hm22_ns"))
 ```
 
 Column {data-width=300}
 -----------------------------------------------------------------------
+
+### h-index as of end 2022 (self-citations excluded)
 
 ```{r, fig.height=8}
 ggplotly(s2, tooltip = c("inst_name","h22_ns"))
 ```
 
+
+### Number of single authored papers
+
+```{r,fig.height=8}
+s5 <- ggplot(data=singleyr_lka2,
+       aes(y=reorder(authfull,(nps_ns)), x = nps_ns, col=inst_name)) + geom_point() +    xlab("Number of single authored papers") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+ggplotly(s5, tooltip = c("inst_name","nps_ns"))
+```
+
+Column {data-width=300}
+-----------------------------------------------------------------------
+
+### Composite score (self-citations excluded)
+
+```{r, fig.height=8}
+s3 <- ggplot(data=singleyr_lka2,
+       aes(y=reorder(authfull,(c_ns)), x = c_ns, col=inst_name)) + geom_point() +    xlab("Composite score") + scale_color_manual(values = color_ins)+theme(legend.position="none") + ylab("")
+ggplotly(s3, tooltip = c("inst_name","c_ns"))
+```
+
+### Total cites to single authored papers
+
+```{r, fig.height=8}
+s6 <- ggplot(data=singleyr_lka2,
+       aes(y=reorder(authfull,(ncs_ns)), x = ncs_ns, col=inst_name)) + geom_point() +    xlab("Total cites to single authored papers") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+ggplotly(s6, tooltip = c("inst_name","ncs_ns"))
+```
+
+# Author profiles: career long data
+
 Column {data-width=300}
 -----------------------------------------------------------------------
 
 ```{r, fig.height=8}
-s3 <- ggplot(data=singleyr_lka2,
-       aes(y=reorder(authfull,(c_ns)), x = c_ns, col=inst_name)) + geom_point() +    xlab("Composite score (self-citations excluded)") + scale_color_manual(values = color_ins)+theme(legend.position="none") 
-ggplotly(s3, tooltip = c("inst_name","nc2222_ns"))
+career_lka2 <- career_lka
+career_lka2 <- clean_names(career_lka2)
+c1 <- ggplot(data=career_lka2,
+       aes(y=reorder(authfull,(nc9622_ns)), x = nc9622_ns, col=inst_name)) + geom_point()   + xlab("Total cites 1996-2022") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+
+c2 <- ggplot(data=career_lka2,
+       aes(y=reorder(authfull,(h22_ns)), x = h22_ns, col=inst_name)) + geom_point() +    xlab("h-index as of end 2022") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+
 ```
 
-# Acknowledgement
+### Total cites 1996-2022 (self-citations excluded)
+
+```{r, fig.height=8}
+ggplotly(c1, tooltip=c("inst_name","nc9622_ns"))
+```
+
+### hm-index as of end 2022 (self-citations excluded)
+
+```{r, fig.height=8}
+c4 <- ggplot(data=career_lka2,
+       aes(y=reorder(authfull,(hm22_ns)), x = hm22_ns, col=inst_name)) + geom_point() +    xlab("hm-index as of end 2022") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+ggplotly(c4, tooltip = c("inst_name","hm22_ns"))
+```
+
+Column {data-width=300}
+-----------------------------------------------------------------------
+
+### h-index as of end 2022 (self-citations excluded)
+
+```{r, fig.height=8}
+ggplotly(c2, tooltip = c("inst_name","h22_ns"))
+```
+
+
+### Number of single authored papers
+
+```{r,fig.height=8}
+c5 <- ggplot(data=career_lka2,
+       aes(y=reorder(authfull,(nps_ns)), x = nps_ns, col=inst_name)) + geom_point() +    xlab("Number of single authored papers") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+ggplotly(c5, tooltip = c("inst_name","nps_ns"))
+```
+
+Column {data-width=300}
+-----------------------------------------------------------------------
+
+### Composite score (self-citations excluded)
+
+```{r, fig.height=8}
+c3 <- ggplot(data=career_lka2,
+       aes(y=reorder(authfull,(c_ns)), x = c_ns, col=inst_name)) + geom_point() +    xlab("Composite score") + scale_color_manual(values = color_ins)+theme(legend.position="none") + ylab("")
+ggplotly(c3, tooltip = c("inst_name","c_ns"))
+```
+
+### Total cites to single authored papers
+
+```{r, fig.height=8}
+c6 <- ggplot(data=career_lka2,
+       aes(y=reorder(authfull,(ncs_ns)), x = ncs_ns, col=inst_name)) + geom_point() +    xlab("Total cites to single authored papers") + scale_color_manual(values = color_ins) + theme(legend.position="none") + ylab("")
+ggplotly(c6, tooltip = c("inst_name","ncs_ns"))
+```
+
+# About
+
+**Acknowledgement**
 
 Ioannidis, John P.A. (2023), “October 2023 data-update for "Updated science-wide author databases of standardized citation indicators"”, Elsevier Data Repository, V6, doi: 10.17632/btchxktzyw.6
+
+**Prepared by:** [Dr Thiyanga S. Talagala](https://thiyanga.netlify.app/)
+
+**email:** ttalagala@sjp.ac.lk
