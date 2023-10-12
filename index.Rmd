@@ -14,6 +14,8 @@ library(flexdashboard)
 library(tidyverse)
 library(readxl)
 library(here)
+library(plotly)
+library(patchwork)
 ```
 
 ```{r}
@@ -24,7 +26,7 @@ singleyr <- read_excel(here("data", "Table_1_Authors_singleyr_2022_pubs_since_17
 singleyr_lka <- singleyr |> filter(cntry=="lka")
 ```
 
-# Number of authors
+# USJ Highlights
 
 Column {data-width=400}
 -----------------------------------------------
@@ -35,7 +37,7 @@ Column {data-width=400}
 singleyr_lka  |>
 	group_by(inst_name) |>
 	summarise(count = n()) |> 
-	ggplot(aes(x = reorder(inst_name,(-count)), y = count)) + 
+	ggplot(aes(x = reorder(inst_name,(-count)), y = count, fill=I(ifelse(inst_name=="University of Sri Jayewardenepura", "red", "black")))) + 
 		geom_bar(stat = 'identity') + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + xlab("")+xlab("Institution name") + ylab("Number of authors")
 ```
@@ -47,7 +49,7 @@ singleyr_lka  |>
 career_lka |>
 	group_by(inst_name) |>
 	summarise(count = n()) |> 
-	ggplot(aes(x = reorder(inst_name,(-count)), y = count)) + 
+	ggplot(aes(x = reorder(inst_name,(-count)), y = count, fill=I(ifelse(inst_name=="University of Sri Jayewardenepura", "red", "black")))) + 
 		geom_bar(stat = 'identity') + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + xlab("Institution name") + ylab("Number of authors")
 ```
@@ -66,8 +68,14 @@ singleyr_lka_filter <- singleyr_lka |>
   select(c("authfull", "inst_name", "rank"))
 career_lka_filter <- career_lka |>
   select(c("authfull", "inst_name", "rank"))
-ggplot(data=singleyr_lka_filter,
-       aes(y=reorder(authfull,(-rank)), x = rank, col=I(ifelse(inst_name=="University of Sri Jayewardenepura", "red", "black")))) + geom_point()
+p1 <- ggplot(data=singleyr_lka_filter,
+       aes(y=reorder(authfull,(-rank)), x = rank, colour=I(ifelse(inst_name=="University of Sri Jayewardenepura", "red", "black")))) + geom_point() + geom_segment(aes(yend = reorder(authfull,(-rank))), xend = 0, colour = "grey50") + ylab("Author name") + xlab("Rank") + scale_x_continuous(labels = scales::comma_format()) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) 
+p1.2 <- plotly::ggplotly(p1, tooltip = c("rank")) |> style(showlegend = FALSE)
+
+p1.2
+
+
+
 ```
 
 Column {data-width=300}
@@ -75,17 +83,65 @@ Column {data-width=300}
 
 ### Rank based on composite score career long data (self-citation excluded)
 
-```{r, fig.height=5}
-ggplot(data=career_lka_filter,
-       aes(y=reorder(authfull,(-rank)), x = rank, col=I(ifelse(inst_name=="University of Sri Jayewardenepura", "red", "black")))) + geom_point()
+```{r, fig.height=12}
+p2 <- ggplot(data=career_lka_filter,
+       aes(y=reorder(authfull,(-rank)), x = rank, col=I(ifelse(inst_name=="University of Sri Jayewardenepura", "red", "black")))) + geom_point() +   geom_segment(aes(yend = reorder(authfull,(-rank))), xend = 0, colour = "grey50") +
+  ylab("Author name") + xlab("Rank")  + scale_x_continuous(labels = scales::comma_format()) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+#p3 <- ggplot(career_lka_filter, aes(y=reorder(authfull,(-rank)), x = "1", fill = inst_name)) +
+#  geom_tile() + theme(legend.position ="none",axis.text.y=element_blank(), 
+#      axis.ticks.y=element_blank()) +ylab("")
+p4 <- ggplotly(p2, tooltip = c("rank"))
+p4 |> style(showlegend = FALSE)
 ```
 
 
-# Author profile: career long data 
+# Autours by Institution
 
 
 
-# Author profile: single year recent data (2022)
+Column {data-width=300}
+-----------------------------------------------------------------------
+
+### Rank based on composite score single data (self-citation excluded)
+
+```{r, fig.height=12}
+singleyr_lka_filter <- singleyr_lka |>
+  select(c("authfull", "inst_name", "rank"))
+career_lka_filter <- career_lka |>
+  select(c("authfull", "inst_name", "rank"))
+p1 <- ggplot(data=singleyr_lka_filter,
+       aes(y=reorder(authfull,(-rank)), x = rank, colour=I(ifelse(inst_name=="University of Sri Jayewardenepura", "red", "black")))) + geom_point() + geom_segment(aes(yend = reorder(authfull,(-rank))), xend = 0, colour = "grey50") + ylab("Author name") + xlab("Rank") + scale_x_continuous(labels = scales::comma_format()) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) 
+p1.2 <- plotly::ggplotly(p1, tooltip = c("rank")) |> style(showlegend = FALSE)
+
+p1.2
+
+
+
+```
+
+
+# Authors by Institution
+
+Column {data-width=300}
+-----------------------------------------------------------------------
+
+### Rank based on composite score career long data (self-citation excluded)
+
+```{r, fig.height=12}
+a1 <- ggplot(data=career_lka_filter,
+       aes(y=reorder(authfull,(-rank)), x = rank, col=inst_name)) + geom_point() +   geom_segment(aes(yend = reorder(authfull,(-rank))), xend = 0, colour = "grey50") +
+  ylab("Author name") + xlab("Rank")  + scale_x_continuous(labels = scales::comma_format()) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+a2 <- ggplotly(a1, tooltip = c("rank"))
+a2 |> style(showlegend = FALSE)
+```
+
+
+
+
+
+
+
 
 # Career-long data (updated to end-of-2022 )
 
