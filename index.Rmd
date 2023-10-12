@@ -1,5 +1,5 @@
 ---
-title: "Visualisation of science-wide author databases of standardized citation indicators"
+title: "Visualisation of science-wide author databases of standardized citation indicators for Sri Lanka"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -12,38 +12,53 @@ library(flexdashboard)
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)
+library(readxl)
+library(here)
 ```
 
 ```{r}
 # data
-
+career <- read_excel(here("data", "Table_1_Authors_career_2022_pubs_since_1788_wopp_extracted_202310.xlsx"), sheet=2)
+career_lka <- career |> filter(cntry=="lka")
+singleyr <- read_excel(here("data", "Table_1_Authors_singleyr_2022_pubs_since_1788_wopp_extracted_202310.xlsx"), sheet=2)
+singleyr_lka <- singleyr |> filter(cntry=="lka")
 ```
 
-# Panel 1
-
-Column {data-width=650}
------------------------------------------------------------------------
-
-### Chart A
+# Career-long data visualization
 
 ```{r}
-
+career_lka |>
+	group_by(inst_name) |>
+	summarise(count = n()) |> 
+	ggplot(aes(x = reorder(inst_name,(-count)), y = count)) + 
+		geom_bar(stat = 'identity') + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + xlab("")
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B
+# Single year data visualization
 
 ```{r}
-
+singleyr_lka  |>
+	group_by(inst_name) |>
+	summarise(count = n()) |> 
+	ggplot(aes(x = reorder(inst_name,(-count)), y = count)) + 
+		geom_bar(stat = 'identity') + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + xlab("")
 ```
 
-### Chart C
+# Career-long data (updated to end-of-2022 )
 
 ```{r}
-
+knitr::kable(career_lka)
 ```
+
+# Single recent year data (2022)
+
+```{r}
+knitr::kable(singleyr_lka)
+```
+
+
 
 ---
 
@@ -51,3 +66,7 @@ Column {data-width=350}
 
 Column {data-width=650}
 -----------------------------------------------------------------------
+
+# Acknowledgement
+
+Ioannidis, John P.A. (2023), “October 2023 data-update for "Updated science-wide author databases of standardized citation indicators"”, Elsevier Data Repository, V6, doi: 10.17632/btchxktzyw.6
