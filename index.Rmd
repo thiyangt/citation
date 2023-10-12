@@ -16,6 +16,7 @@ library(readxl)
 library(here)
 library(plotly)
 library(patchwork)
+library(janitor) # remove white space in columns
 ```
 
 ```{r}
@@ -118,7 +119,7 @@ Column {data-width=300}
 ```{r, fig.height=12}
 a1 <- ggplot(data=singleyr_lka_filter,
        aes(y=reorder(authfull,(-rank)), x = rank, col=inst_name)) + geom_point() +   geom_segment(aes(yend = reorder(authfull,(-rank)), col = inst_name), xend = 0 ) +
-  ylab("Author name") + xlab("Rank")  + scale_x_continuous(labels = scales::comma_format()) +
+  ylab("Author name") + xlab("Rank")  + scale_x_continuous(labels = scales::comma_format(), breaks=seq(10000, 550000, 20000)) +
   scale_color_manual(values = color_ins) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
@@ -136,37 +137,48 @@ Column {data-width=300}
 ### Rank based on composite score career long data (self-citation excluded)
 
 ```{r, fig.height=12}
+
 b1 <- ggplot(data=career_lka_filter,
        aes(y=reorder(authfull,(-rank)), x = rank, col=inst_name)) + geom_point() +   geom_segment(aes(yend = reorder(authfull,(-rank)),col = inst_name), xend = 0) +
-  ylab("Author name") + xlab("Rank")  + scale_x_continuous(labels = scales::comma_format()) + scale_color_manual(values = color_ins) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  ylab("Author name") + xlab("Rank")  + scale_x_continuous(labels = scales::comma_format(), breaks=seq(65000, 440000, 10000)) + scale_color_manual(values = color_ins) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) 
 
 b2 <- ggplotly(b1, tooltip = c("rank", "inst_name"))
 b2 |> style(showlegend = TRUE)
 ```
 
 
+# Author profiles: 2022 data
 
+Column {data-width=300}
+-----------------------------------------------------------------------
 
+```{r, fig.height=8}
+singleyr_lka2 <- singleyr_lka
+singleyr_lka2 <- clean_names(singleyr_lka2)
+s1 <- ggplot(data=singleyr_lka2,
+       aes(y=reorder(authfull,(nc2222_ns)), x = nc2222_ns), col=inst_name) + geom_point()   + xlab("Total cites in 2022 (self-citations excluded)") + scale_color_manual(values = color_ins) + theme(legend.position="none") 
 
-
-
-
-# Career-long data (updated to end-of-2022 )
-
-```{r}
-knitr::kable(career_lka)
+s2 <- ggplot(data=singleyr_lka2,
+       aes(y=reorder(authfull,(h22_ns)), x = h22_ns), col=inst_name) + geom_point() +    xlab("h-index as of end 2022 (self-citations excluded)") + scale_color_manual(values = color_ins) + theme(legend.position="none") 
+ggplotly(s1, tooltip = c("inst_name","h22_ns"))
 ```
 
-# Single recent year data (2022)
+Column {data-width=300}
+-----------------------------------------------------------------------
 
-```{r}
-knitr::kable(singleyr_lka)
+```{r, fig.height=8}
+ggplotly(s2, tooltip = c("inst_name","h22_ns"))
 ```
 
+Column {data-width=300}
+-----------------------------------------------------------------------
 
-
-
+```{r, fig.height=8}
+s3 <- ggplot(data=singleyr_lka2,
+       aes(y=reorder(authfull,(c_ns)), x = c_ns, col=inst_name)) + geom_point() +    xlab("Composite score (self-citations excluded)") + scale_color_manual(values = color_ins)+theme(legend.position="none") 
+ggplotly(s3, tooltip = c("inst_name","nc2222_ns"))
+```
 
 # Acknowledgement
 
