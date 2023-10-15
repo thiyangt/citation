@@ -296,26 +296,32 @@ ggplotly(c6, tooltip = c("inst_name","ncs_ns"))
 # Author field
 
 
+
 ### Top ranked higher-level Science-Metrix category (field) for author: based on calendar year 2022 data
 
-```{r,fig.width=20}
+```{r, fig.width=20}
 singleyr_lka2  |>
 	group_by(sm_field, inst_name) |>
 	summarise(count = n()) |> 
 	ggplot(aes(x = reorder(sm_field,(-count)), y = count, fill=sm_field)) + 
 		geom_bar(stat = 'identity') + 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position="bottom") + xlab("Field") + ylab("Number of authors") + facet_wrap(vars(inst_name), ncol=10,scale="free_x", labeller = label_wrap_gen(multi_line = TRUE)) + scale_fill_brewer(palette = "Paired") + labs(fill = "Top ranked higher-level Science-Metrix category (field) for author")
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position=c(2,1)) + xlab("Field") + ylab("Number of authors") + facet_wrap(vars(inst_name), ncol=10,scale="free_x", labeller = label_wrap_gen(multi_line = TRUE)) + scale_fill_brewer(palette = "Paired") + labs(fill = "Top ranked\nhigher-level Science-Metrix\ncategory (field) for author")
+
 ```
+
+
+
 
 
 ### Author name vs Author field 
 
-```{r, fig.width=20, fig.height=5}
+```{r,  fig.width=20}
 singleyr_lka2  |> 
   group_by(sm_field, authfull) |>
 	summarise(count = n()) |>
   ggplot(aes(x = authfull, y = sm_field, fill = count)) +
-  geom_raster(color = "white") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = "none") + xlab("")+ylab("")+ coord_fixed(ratio = 0.8)
+  geom_raster(color = "white") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = "none") + xlab("")+ylab("")+ coord_fixed(ratio = 0.8) 
+
 ```
 
 # About
