@@ -160,7 +160,7 @@ b2 |> style(showlegend = TRUE)
 ```
 
 
-# Author profiles: with data from calendar year 2022 data
+# Citation indicators by authors and institution: calendar year 2022 data
 
 Column {data-width=300}
 -----------------------------------------------------------------------
@@ -227,7 +227,7 @@ s6 <- ggplot(data=singleyr_lka2,
 ggplotly(s6, tooltip = c("inst_name","ncs_ns"))
 ```
 
-# Author profiles: career-long data
+# Citation indicators by authors and institution: career-long data
 
 Column {data-width=300}
 -----------------------------------------------------------------------
@@ -297,7 +297,7 @@ ggplotly(c6, tooltip = c("inst_name","ncs_ns"))
 
 
 
-### Top ranked higher-level Science-Metrix category (field) for author: based on calendar year 2022 data
+### Figure 19: Top ranked higher-level Science-Metrix category (field) for author: based on calendar year 2022 data
 
 ```{r, fig.width=20}
 singleyr_lka2  |>
@@ -313,7 +313,7 @@ singleyr_lka2  |>
 
 
 
-### Author name vs Author field 
+### Figure 20: Author name vs author field 
 
 ```{r,  fig.width=20}
 singleyr_lka2  |> 
