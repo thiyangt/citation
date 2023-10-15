@@ -160,7 +160,7 @@ b2 |> style(showlegend = TRUE)
 ```
 
 
-# Citation indicators by authors and institution: calendar year 2022 data
+# Citation indicators by author and institution: calendar year 2022 data
 
 Column {data-width=300}
 -----------------------------------------------------------------------
@@ -227,7 +227,7 @@ s6 <- ggplot(data=singleyr_lka2,
 ggplotly(s6, tooltip = c("inst_name","ncs_ns"))
 ```
 
-# Citation indicators by authors and institution: career-long data
+# Citation indicators by author and institution: career-long data
 
 Column {data-width=300}
 -----------------------------------------------------------------------
