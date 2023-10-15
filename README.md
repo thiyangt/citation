@@ -31,7 +31,7 @@ Link to the dashboard:
 
 ### Panel 1 information: USJ Highlights
 
-Link:
+Link: <https://thiyangt.github.io/citation/#usj-highlights>
 
 Figure 1: Number of authors by institutions based on single recent year
 data pertain to citations received during calendar year 2022
@@ -50,6 +50,7 @@ career-long data (self-citation excluded)
 ## Panel 2: Authors by institution: calendar year 2022 data
 
 Link:
+<https://thiyangt.github.io/citation/#authors-by-institution-calendar-year-2022-data>
 
 Authors by institution (authors are ordered according to the their rank
 based on composite score: 2022 calender year data (self-citation
@@ -60,6 +61,7 @@ excluded))
 ### Panel 3: Authors by institution: Career-long data
 
 Link:
+<https://thiyangt.github.io/citation/#authors-by-institution-career-long-data>
 
 Authors by institution (authors are ordered according to the their rank
 based on career-long data (self-citation excluded))
@@ -69,6 +71,7 @@ based on career-long data (self-citation excluded))
 ### Panel 4: Citation indicators by author and institution: calendar year 2022 data
 
 Link:
+<https://thiyangt.github.io/citation/#citation-indicators-by-author-and-institution-calendar-year-2022-data>
 
 Figure 7: Total cites in 2022 (self-citations excluded)
 
@@ -86,6 +89,7 @@ excluded)
 ### Panel 5: Citation indicators by author and institution: career-long data
 
 Link:
+<https://thiyangt.github.io/citation/#citation-indicators-by-author-and-institution-career-long-data>
 
 Figure 13: Total cites 1996-2022 (self-citations excluded)
 
@@ -104,7 +108,7 @@ excluded)
 
 ### Panel 6: Author field
 
-Link:
+Link: <https://thiyangt.github.io/citation/#author-field>
 
 Figure 19: Top ranked higher-level Science-Metrix category (field) for
 author: based on calendar year 2022 data
