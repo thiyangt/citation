@@ -305,7 +305,7 @@ singleyr_lka2  |>
 	summarise(count = n()) |> 
 	ggplot(aes(x = reorder(sm_field,(-count)), y = count, fill=sm_field)) + 
 		geom_bar(stat = 'identity') + 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position=c(2,1)) + xlab("Field") + ylab("Number of authors") + facet_wrap(vars(inst_name), ncol=10,scale="free_x", labeller = label_wrap_gen(multi_line = TRUE)) + scale_fill_brewer(palette = "Paired") + labs(fill = "Top ranked\nhigher-level Science-Metrix\ncategory (field) for author")
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position="right") + xlab("Field") + ylab("Number of authors") + facet_wrap(vars(inst_name), ncol=10,scale="free_x", labeller = label_wrap_gen(multi_line = TRUE)) + scale_fill_brewer(palette = "Paired") + labs(fill = "Field")
 
 ```
 
