@@ -26,7 +26,7 @@ Link to the dashboard: https://thiyangt.github.io/citation/#usj-highlights
 
 ### Panel 1 information: USJ Highlights
 
-Link: 
+Link: https://thiyangt.github.io/citation/#usj-highlights
 
 Figure 1: Number of authors by institutions based on single recent year data pertain to citations received during calendar year 2022
 
@@ -40,7 +40,7 @@ Figure 4: Author rank based on composite score with data from career-long data (
 
 ## Panel 2: Authors by institution: calendar year 2022 data
 
-Link: 
+Link: https://thiyangt.github.io/citation/#authors-by-institution-calendar-year-2022-data
 
 Authors by institution (authors are ordered according to the their rank based on composite score: 2022 calender year data (self-citation excluded))
 
@@ -48,13 +48,15 @@ Authors by institution (authors are ordered according to the their rank based on
 
 ### Panel 3: Authors by institution: Career-long data
 
-Link: 
+Link: https://thiyangt.github.io/citation/#authors-by-institution-career-long-data
 
 Authors by institution (authors are ordered according to the their rank based on career-long data (self-citation excluded))
 
 ![](3.png)
 
-### Panel 4: Citation indicators by authors and institution: calendar year 2022 data
+### Panel 4: Citation indicators by author and institution: calendar year 2022 data
+
+Link: https://thiyangt.github.io/citation/#citation-indicators-by-author-and-institution-calendar-year-2022-data
 
 Figure 7: Total cites in 2022 (self-citations excluded)
 
@@ -68,7 +70,11 @@ Figure 11: Number of single authored papers
 
 Figure 12: Total cites to single authored papers (self-citations excluded)
 
-### Panel 5: Citation indicators by authors and institution: career-long data
+
+
+### Panel 5: Citation indicators by author and institution: career-long data
+
+Link: https://thiyangt.github.io/citation/#citation-indicators-by-author-and-institution-career-long-data
 
 Figure 13: Total cites 1996-2022 (self-citations excluded)
 
@@ -83,11 +89,17 @@ Figure 17: Number of single authored papers
 
 Figure 18: Total cites to single authored papers (self-citations excluded)
 
+![](5.png)
+
 ### Panel 6: Author field
+
+Link: https://thiyangt.github.io/citation/#author-field
 
 Figure 19: Top ranked higher-level Science-Metrix category (field) for author: based on calendar year 2022 data
 
 Figure 20: Author name vs author field 
+
+![](6.png)
 
 ### Panel 7: About 
 

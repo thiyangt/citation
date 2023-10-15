@@ -313,7 +313,7 @@ singleyr_lka2  |>
 
 
 
-### Figure 20: Author name vs author field 
+### Figure 20: Author field vs author name
 
 ```{r,  fig.width=20}
 singleyr_lka2  |> 
