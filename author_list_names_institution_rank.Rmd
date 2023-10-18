@@ -1,0 +1,46 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Authors in the single recent year dataset (citations received during the calendar year 2022)
+
+```{r, comment=NA, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readxl)
+library(here)
+library(knitr)
+singleyr <- read_excel(here("data", "Table_1_Authors_singleyr_2022_pubs_since_1788_wopp_extracted_202310.xlsx"), sheet=2)
+singleyr$inst_name <- recode_factor(singleyr$inst_name, "International Water Management Institute" = "International Water Management Institute (IWMI)"  , 
+                               "Faculty of Medicine, University of Peradeniya"= "University of Peradeniya", "University of Colombo Faculty of Medicine"=   "University of Colombo" ,"International Water Management Institute (IWMI) Colombo" = 
+"International Water Management Institute (IWMI)")
+singleyr_lka <- singleyr |> filter(cntry=="lka")
+singleyr_lka_filter <- singleyr_lka |>
+  select(c("authfull", "inst_name", "rank"))|> arrange(rank) 
+singleyr_lka_filter |> knitr::kable( col.names = c('Author', 'Instittution', 'Rank*'))
+```
+
+* Rank is based on \underline{single recent year data, focusing on citations received during the calendar year 2022}.
+
+\newpage
+
+## Authors in the career-long dataset
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# data
+career <- read_excel(here("data", "Table_1_Authors_career_2022_pubs_since_1788_wopp_extracted_202310.xlsx"), sheet=2)
+career$inst_name <- recode_factor(career$inst_name,"International Water Management Institute" = "International Water Management Institute (IWMI)"  , 
+                               "Faculty of Medicine, University of Peradeniya"= "University of Peradeniya", "University of Colombo Faculty of Medicine"=   "University of Colombo" ,"International Water Management Institute (IWMI) Colombo" = 
+"International Water Management Institute (IWMI)") 
+career_lka <- career |> filter(cntry=="lka")
+career_lka <- career |> filter(cntry=="lka")
+career_lka_filter <- career_lka |>
+  select(c("authfull", "inst_name", "rank"))|> arrange(rank) 
+career_lka_filter |> knitr::kable( col.names = c('Author', 'Instittution', 'Rank**'))
+
+```
+
+** Rank is based on \underline{career-long data (encompass information until the end of 2022)}
