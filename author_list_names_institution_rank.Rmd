@@ -6,7 +6,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Authors in the single recent year dataset (citations received during the calendar year 2022)
+## Authors in the single recent year dataset (based on citations received during the calendar year 2022)
 
 ```{r, comment=NA, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -20,7 +20,7 @@ singleyr$inst_name <- recode_factor(singleyr$inst_name, "International Water Man
 singleyr_lka <- singleyr |> filter(cntry=="lka")
 singleyr_lka_filter <- singleyr_lka |>
   select(c("authfull", "inst_name", "rank"))|> arrange(rank) 
-singleyr_lka_filter |> knitr::kable( col.names = c('Author', 'Instittution', 'Rank*'))
+singleyr_lka_filter |> knitr::kable( col.names = c('Author', 'Institution', 'Rank*'))
 ```
 
 * Rank is based on \underline{single recent year data, focusing on citations received during the calendar year 2022}.
@@ -39,7 +39,7 @@ career_lka <- career |> filter(cntry=="lka")
 career_lka <- career |> filter(cntry=="lka")
 career_lka_filter <- career_lka |>
   select(c("authfull", "inst_name", "rank"))|> arrange(rank) 
-career_lka_filter |> knitr::kable( col.names = c('Author', 'Instittution', 'Rank**'))
+career_lka_filter |> knitr::kable( col.names = c('Author', 'Institution', 'Rank**'))
 
 ```
 
