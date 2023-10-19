@@ -16,3 +16,11 @@ c(career_lka$authfull, singleyr_lka$authfull)|>
 c(career_lka$inst_name, singleyr_lka$inst_name)|>
   unique() |>
   length() #50
+
+##
+sum(career_lka$authfull %in% singleyr_lka$authfull) #16
+sum(singleyr_lka$authfull %in% career_lka$authfull)
+
+sum(!(career_lka$authfull %in% singleyr_lka$authfull)) #8
+
+sum(!(singleyr_lka$authfull %in% career_lka$authfull)) #8
